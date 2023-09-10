@@ -13,6 +13,8 @@
 <body>
     <div id="vue-app" class="container">
         <button class="button" @click="randomSelect">Выбрать случайное кафе</button>
+        <button class="button" @click="loadAllCafes">Вернуться к списку кафе</button>
+
         <ul v-if="!selectedCafe" class="cafe-list">
             <li v-for="cafe in cafes" :key="cafe.id" @click="selectCafe(cafe)" class="cafe-card">
                 <img class="cafe-image" :src="cafe.photo" alt="Фото кафе">

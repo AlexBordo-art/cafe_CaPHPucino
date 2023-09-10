@@ -12,6 +12,15 @@ const app = Vue.createApp({
             this.selectedCafe = this.cafes[randomIndex];
             this.loadComments(this.selectedCafe.id);
         },
+
+        loadAllCafes() {
+            console.log("Returning to full cafe list");  // Для отладки
+            this.selectedCafe = null;  // Сбрасываем выбранное кафе
+        },
+        
+        
+        
+
         selectCafe(cafe) {
             this.selectedCafe = cafe;
             this.loadComments(cafe.id);
