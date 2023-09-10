@@ -1,0 +1,233 @@
+/* Общие стили */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Comfortaa", cursive;
+}
+
+/* Общие стили для карточек кафе */
+.cafe-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  width: calc(100% - 32px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для изображения в карточке */
+.cafe-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Стили для названия и дополнительной информации */
+.cafe-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.cafe-info {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Стили для кнопок */
+.button {
+  font-family: "Comfortaa", cursive !important;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Стили для комментариев */
+.comment {
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+
+/* Стили для страницы конкретного кафе */
+.cafe-page {
+  padding: 16px;
+}
+
+/* Адаптивные стили */
+@media (min-width: 768px) {
+  .cafe-card {
+    width: calc(50% - 32px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cafe-card {
+    width: calc(33.333% - 32px);
+  }
+}
+
+/* Стили для карточек кафе */
+.cafe-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cafe-image {
+  width: 100%;
+  height: auto;
+}
+
+.cafe-content {
+  padding: 16px;
+}
+
+.cafe-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cafe-info {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.cafe-last-comment {
+  font-size: 12px;
+  color: #333;
+}
+/* ... Ваши предыдущие стили ... */
+
+/* Дополнительные стили */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cafe-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cafe-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Стили для формы комментариев */
+add-comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+add-comment-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+add-comment-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+add-comment-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для формы комментариев */
+add-comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+add-comment-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+add-comment-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+add-comment-form button:hover {
+    background-color: #0056b3;
+}
+/* ... Ваши предыдущие стили ... */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cafe-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+add-comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+add-comment-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+add-comment-form button {
+    align-self: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+add-comment-form button:hover {
+    background-color: #0056b3;
+}

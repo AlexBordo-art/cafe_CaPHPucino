@@ -28,6 +28,8 @@ class CafeController extends Controller
     {
         $cafe = Cafe::findOne($id);
         $commentModel = new Comment();
+        $comments = Comment::find()->where(['id_cafe' => $id])->all();
+
 
         if ($commentModel->load(Yii::$app->request->post()) && $commentModel->save()) {
             return $this->refresh();
@@ -37,6 +39,7 @@ class CafeController extends Controller
             return $this->render('view-cafe', [
                 'cafe' => $cafe,
                 'commentModel' => $commentModel,
+                'comments' => $comments,
             ]);
         } else {
             throw new \yii\web\NotFoundHttpException('Кафе не найдено.');
@@ -80,26 +83,69 @@ class CafeController extends Controller
         return $this->redirect(['index']);
     }
 
+    // public function actionCreateComment($id)
+    // {
+    //     $model = new Comment();
+
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         return $this->redirect(['view-cafe', 'id' => $model->id_cafe]);
+    //     }
+
+    //     return $this->render('create-comment', [
+    //         'model' => $model,
+    //         'id' => $id,
+    //     ]);
+    // }
+
     public function actionCreateComment($id)
     {
-        $model = new Comment();
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view-cafe', 'id' => $model->id_cafe]);
+        // Получаем сырые POST-данные
+        $rawData = Yii::$app->request->getRawBody();
+
+        // Декодируем JSON-строку в массив PHP
+        $postData = json_decode($rawData, true);
+
+        $model = new Comment();
+        $model->id_cafe = $id;  // Устанавливаем ID кафе для нового комментария
+
+        // Загружаем данные в модель из декодированного массива
+        $model->text = $postData['text'] ?? null;
+
+        if ($model->save()) {
+            return ['status' => 'success', 'message' => 'Комментарий успешно добавлен'];
         }
 
-        return $this->render('create-comment', [
-            'model' => $model,
-            'id' => $id,
-        ]);
+        return ['status' => 'error', 'message' => 'Не удалось добавить комментарий'];
     }
+
+
+
+
+    // public function actionViewComments($id)
+    // {
+    //     $comments = Comment::find()->where(['id_cafe' => $id])->all();
+
+    //     return $this->render('view-comments', [
+    //         'comments' => $comments,
+    //     ]);
+    // }
 
     public function actionViewComments($id)
     {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
         $comments = Comment::find()->where(['id_cafe' => $id])->all();
 
-        return $this->render('view-comments', [
-            'comments' => $comments,
-        ]);
+        return $comments;
+    }
+
+    public function beforeAction($action)
+    {
+        if ($action->id == 'create-comment') {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
     }
 }

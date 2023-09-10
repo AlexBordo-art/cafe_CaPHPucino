@@ -27,6 +27,13 @@ use yii\helpers\Html;
 
 <?php ActiveForm::end(); ?>
 
+<h3>Комментарии:</h3>
+<ul>
+    <?php foreach($comments as $comment): ?>
+        <li><?= $comment->text ?></li>
+    <?php endforeach; ?>
+</ul>
+
 <!-- <h1><?php echo $cafe->name; ?></h1>
 <p>Адрес: <?php echo $cafe->address; ?></p>
 <p>Ориентир: <?php echo $cafe->landmark; ?></p>
